@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Daniela 💖</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+    overflow:hidden;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+.sky{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to bottom,#ff9a9e 0%,#fad0c4 40%,#ffd6a5 70%,#fff1c1 100%);
+}
+
+.sun{
+    position:absolute;
+    width:180px;
+    height:180px;
+    background:#ffd54f;
+    border-radius:50%;
+    bottom:80px;
+    left:50%;
+    transform:translateX(-50%);
+    box-shadow:0 0 80px #ffd54f;
+    animation:pulse 4s infinite;
+    z-index:1;
+}
+
+@keyframes pulse{50%{box-shadow:0 0 120px #ffd54f;}}
+
+.cloud{
+    position:absolute;
+    font-size:90px;
+    opacity:0.8;
+    animation:moveCloud linear infinite;
+    z-index:2;
+}
+
+.cloud1{top:50px;left:-200px;animation-duration:35s;}
+.cloud2{top:150px;left:-500px;animation-duration:50s;}
+
+@keyframes moveCloud{from{transform:translateX(0);}to{transform:translateX(150vw);}}
+
+.card{
+    position:relative;
+    z-index:5;
+    text-align:center;
+    background:rgba(255,255,255,.85);
+    padding:40px;
+    border-radius:30px;
+    width:90%;
+    max-width:700px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    animation:floatCard 4s ease-in-out infinite;
+}
+
+@keyframes floatCard{50%{transform:translateY(-10px);}}
+
+h1{color:#ff4f9a;font-size:3rem;}
+
+p{margin-top:15px;line-height:1.8;color:#555;font-size:1.2rem;}
+
+button{
+    margin-top:25px;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    background:#ff4f9a;
+    color:white;
+    cursor:pointer;
+    font-size:1rem;
+    transition:.3s;
+}
+button:hover{transform:scale(1.1);}
+
+#surprise{
+    display:none;
+    margin-top:20px;
+    color:#ff1493;
+    font-size:1.3rem;
+    font-weight:bold;
+}
+
+.flower{
+    position:fixed;
+    font-size:24px;
+    top:-60px;
+    z-index:3;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    from{transform:translateY(0) rotate(0deg);}
+    to{transform:translateY(110vh) rotate(360deg);}
+}
+
+.heart{
+    position:fixed;
+    font-size:20px;
+    bottom:0;
+    z-index:3;
+    animation:rise 6s linear forwards;
+}
+
+@keyframes rise{
+    from{transform:translateY(0);opacity:1;}
+    to{transform:translateY(-100vh);opacity:0;}
+}
+
+.sparkle{
+    position:fixed;
+    animation:twinkle 2s infinite;
+    z-index:2;
+    pointer-events:none;
+}
+
+@keyframes twinkle{50%{opacity:0.2;}}
+</style>
+</head>
+<body>
+
+<div class="sky"></div>
+<div class="sun"></div>
+<div class="cloud cloud1">☁️</div>
+<div class="cloud cloud2">☁️</div>
+
+<div class="card">
+    <h1>🎂 Happy Birthday Daniela 💖</h1>
+    <p>
+        To the most beautiful girl, <br>
+        May your day be filled with love, happiness,
+        laughter, and magical moments. 🌸✨
+    </p>
+    <button onclick="showSurprise()">Open Your Gift 🎁</button>
+    <div id="surprise">
+        💕 You deserve all the happiness in the world. 💕
+    </div>
+</div>
+
+<script>
+function showSurprise(){
+    document.getElementById("surprise").style.display="block";
+}
+
+function createFlower(){
+    const flower=document.createElement("div");
+    flower.className="flower";
+    flower.innerHTML="🌸";
+    flower.style.left=Math.random()*window.innerWidth+"px";
+    const dur=(Math.random()*5+5);
+    flower.style.animationDuration=dur+"s";
+    document.body.appendChild(flower);
+    setTimeout(()=>flower.remove(),(dur*1000)+200);
+}
+
+setInterval(createFlower,300);
+
+function createHeart(){
+    const heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*window.innerWidth+"px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6200);
+}
+
+setInterval(createHeart,1000);
+
+for(let i=0;i<50;i++){
+    const s=document.createElement("div");
+    s.className="sparkle";
+    s.innerHTML="✨";
+    s.style.left=Math.random()*100+"vw";
+    s.style.top=Math.random()*100+"vh";
+    s.style.animationDelay=Math.random()*2+"s";
+    document.body.appendChild(s);
+}
+</script>
+</body>
+</html>
